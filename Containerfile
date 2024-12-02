@@ -7,5 +7,9 @@ LABEL com.github.containers.toolbox="true" \
 
 RUN sudo dnf update
 
-RUN sudo dnf copr enable iucar/cran
+RUN sudo dnf copr enable iucar/cran -y
 RUN sudo dnf install R-CoprManager -y
+     
+RUN sudo dnf copr enable iucar/rstudio -y && \
+      sudo dnf install rstudio-desktop -y && \
+      sudo dnf install rstudio-server -y
