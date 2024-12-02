@@ -22,6 +22,7 @@ neovim
 npm
 plocate
 python3
+R
 ripgrep
 speedtest-cli
 starship
