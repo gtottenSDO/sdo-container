@@ -7,7 +7,7 @@ LABEL com.github.containers.toolbox="true" \
 
 RUN sudo dnf copr enable iucar/cran -y && \
       sudo dnf install R R-CoprManager -y && \
-      sudo dnf install R-CRAN-tidyverse R-CRAN-languageserver R-CRAN-vroom R-CRAN-httpgd R-CRAN-quarto R-CRAN-duckdb R-CRAN-duckplyr R-CRAN-dbi R-CRAN-odbc
+      sudo dnf install R-CRAN-tidyverse R-CRAN-languageserver R-CRAN-vroom R-CRAN-httpgd R-CRAN-quarto R-CRAN-duckdb R-CRAN-duckplyr R-CRAN-dbi R-CRAN-odbc -y
      
 RUN sudo dnf copr enable iucar/rstudio -y && \
       sudo dnf install rstudio-desktop -y && \
