@@ -4,11 +4,7 @@ LABEL com.github.containers.toolbox="true" \
       usage="This image is meant to be used with the toolbox or distrobox command" \
       summary="A cloud-native terminal experience powered by Fedora, this is based off the fedora-toolbox containerfile by Universal Blue https://github.com/ublue-os/toolboxes" 
 
-COPY ./toolboxes/fedora-toolbox/packages.fedora /tmp/toolbox-packages
-
-RUN dnf -y upgrade && \
-    dnf -y install $(<tmp/toolbox-packages) && \
-    dnf clean all
+RUN dnf -y upgrade
 
 # Set up dependencies
 RUN git clone https://github.com/89luca89/distrobox.git --single-branch /tmp/distrobox && \
