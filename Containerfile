@@ -18,12 +18,14 @@ RUN git clone https://github.com/89luca89/distrobox.git --single-branch /tmp/dis
 # Enable R coprmanager and install R
 RUN sudo dnf copr enable iucar/cran -y && \
       sudo dnf install R R-CoprManager -y && \
-      sudo dnf install R-CRAN-tidyverse R-CRAN-languageserver R-CRAN-vroom R-CRAN-httpgd R-CRAN-quarto R-CRAN-duckdb R-CRAN-duckplyr R-CRAN-DBI R-CRAN-odbc -y
+      sudo dnf install R-CRAN-tidyverse R-CRAN-languageserver R-CRAN-vroom R-CRAN-httpgd R-CRAN-quarto R-CRAN-duckdb R-CRAN-duckplyr R-CRAN-DBI R-CRAN-odbc -y && \
+    dnf clean all
 
 # Enable rstudio copr and install both rstudio desktop and rstudio server
 RUN sudo dnf copr enable iucar/rstudio -y && \
       sudo dnf install rstudio-desktop -y && \
-      sudo dnf install rstudio-server -y
+      sudo dnf install rstudio-server -y && \
+    dnf clean all
 
 # Get latest positron version file and install using dnf
 RUN LATEST_RPM=$(curl -L \
@@ -34,7 +36,8 @@ RUN LATEST_RPM=$(curl -L \
       head -n 1 | \
       cut -d : -f 2,3 | \
       tr -d \") && \
-      sudo dnf install -y $LATEST_RPM
+      sudo dnf install -y $LATEST_RPM && \
+    dnf clean all
 
 # Cleanup
-RUN rm -rf /tmp/*
+# RUN rm -rf /tmp/*
