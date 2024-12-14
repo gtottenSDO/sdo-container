@@ -15,6 +15,12 @@ RUN git clone https://github.com/89luca89/distrobox.git --single-branch /tmp/dis
     dnf install -y 'dnf-command(copr)' && \
     dnf clean all
 
+# download duckdb and copy to /usr/bin
+RUN wget https://github.com/duckdb/duckdb/releases/download/v1.1.3/duckdb_cli-linux-amd64.zip -O /tmp/duckdb/ddb.zip && \
+      unzip /tmp/duckdb/ddb.zip && \
+      mv duckdb /usr/bin/duckdb && \
+      rm -drf /tmp/duckdb
+
 # Enable R coprmanager and install R
 RUN sudo dnf copr enable iucar/cran -y && \
       sudo dnf install R R-CoprManager -y && \
@@ -42,11 +48,6 @@ RUN LATEST_RPM=$(curl -L \
 # install dbeaver
 RUN sudo dnf install https://dbeaver.io/files/dbeaver-ce-latest-stable.x86_64.rpm -y
 
-# download duckdb and copy to /usr/bin
-RUN wget https://github.com/duckdb/duckdb/releases/download/v1.1.3/duckdb_cli-linux-amd64.zip -O /tmp/duckdb/ddb.zip && \
-      unzip /tmp/duckdb/ddb.zip && \
-      sudo mv duckdb /usr/bin/duckdb && \
-      rm -drf /tmp/duckdb
 
 # Cleanup
 # RUN rm -rf /tmp/*
