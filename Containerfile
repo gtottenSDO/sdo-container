@@ -39,5 +39,14 @@ RUN LATEST_RPM=$(curl -L \
       sudo dnf install -y $LATEST_RPM && \
     dnf clean all
 
+# install dbeaver
+RUN sudo dnf install https://dbeaver.io/files/dbeaver-ce-latest-stable.x86_64.rpm -y
+
+# download duckdb and copy to /usr/bin
+RUN wget https://github.com/duckdb/duckdb/releases/download/v1.1.3/duckdb_cli-linux-amd64.zip -O /tmp/duckdb/ddb.zip && \
+      unzip /tmp/duckdb/ddb.zip && \
+      sudo mv duckdb /usr/bin/duckdb && \
+      rm -drf /tmp/duckdb
+
 # Cleanup
 # RUN rm -rf /tmp/*
