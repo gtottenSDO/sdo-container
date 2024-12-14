@@ -33,18 +33,6 @@ RUN sudo dnf copr enable iucar/rstudio -y && \
       sudo dnf install rstudio-server -y && \
     dnf clean all
 
-# Get latest positron version file and install using dnf
-RUN LATEST_RPM=$(curl -L \
-      -H "Accept: application/vnd.github+json" \
-      -H "X-GitHub-Api-Version: 2022-11-28" \
-      "https://api.github.com/repos/posit-dev/positron/releases" | \
-      grep "browser_download_url.*\.rpm\"" | \
-      head -n 1 | \
-      cut -d : -f 2,3 | \
-      tr -d \") && \
-      sudo dnf install -y $LATEST_RPM && \
-    dnf clean all
-
 # install dbeaver
 RUN sudo dnf install https://dbeaver.io/files/dbeaver-ce-latest-stable.x86_64.rpm -y
 
