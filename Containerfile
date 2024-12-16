@@ -16,10 +16,10 @@ RUN git clone https://github.com/89luca89/distrobox.git --single-branch /tmp/dis
     dnf clean all
 
 # download duckdb and copy to /usr/bin
-RUN wget https://github.com/duckdb/duckdb/releases/download/v1.1.3/duckdb_cli-linux-amd64.zip -O /tmp/duckdb/ddb.zip && \
-      unzip /tmp/duckdb/ddb.zip && \
-      mv duckdb /usr/bin/duckdb && \
-      rm -drf /tmp/duckdb
+# RUN wget https://github.com/duckdb/duckdb/releases/download/v1.1.3/duckdb_cli-linux-amd64.zip -O /tmp/duckdb/ddb.zip && \
+#       unzip /tmp/duckdb/ddb.zip && \
+#       mv duckdb /usr/bin/duckdb && \
+#       rm -drf /tmp/duckdb
 
 # Enable R coprmanager and install R
 RUN sudo dnf copr enable iucar/cran -y && \
