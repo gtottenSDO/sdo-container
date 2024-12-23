@@ -29,12 +29,12 @@ RUN sudo dnf copr enable iucar/cran -y && \
 
 # Enable rstudio copr and install both rstudio desktop and rstudio server
 RUN sudo dnf copr enable iucar/rstudio -y && \
-      sudo dnf install rstudio-desktop -y && \
+#      sudo dnf install rstudio-desktop -y && \
       sudo dnf install rstudio-server -y && \
     dnf clean all
 
 # install dbeaver
-RUN sudo dnf install https://dbeaver.io/files/dbeaver-ce-latest-stable.x86_64.rpm -y
+# RUN sudo dnf install https://dbeaver.io/files/dbeaver-ce-latest-stable.x86_64.rpm -y
 
 
 # Cleanup
